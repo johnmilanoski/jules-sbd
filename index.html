@@ -16,7 +16,14 @@
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="yachts.html" class="nav-link">Yachts</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="yachts.html" class="nav-link">Yachts <span class="dropdown-arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="yachts_completed.html">Completed Projects</a></li>
+                            <li><a class="dropdown-item" href="yachts_in_progress.html">In Progress</a></li>
+                            <li><a class="dropdown-item" href="yachts_boutique_refits.html">Boutique Refits</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a href="other_projects.html" class="nav-link">Other Projects</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -41,22 +48,56 @@
     <main>
         <div class="container">
             <h1>Interior Design for Yachts</h1>
-            <p>From Concept to Launch</p>
-            <img src="images/content-placeholder-1.jpg" alt="Beautiful yacht interior design" class="placeholder-image">
-
-            <p>Carefully Selected Surfaces and Materials</p>
-            <p>Unique Environments for Your Life at Sea</p>
-            <img src="images/content-placeholder-2.jpg" alt="Luxurious materials and surfaces for yacht interiors" class="placeholder-image">
-
-            <p>Art & Accessories to Match the Boat Theme</p>
-            <p>Beautiful Details Accent the Theme</p>
-            <p>Safety and Comfort is Always Stressed</p>
-            <img src="images/content-placeholder-3.jpg" alt="Art and accessories accenting yacht design theme" class="placeholder-image">
             
-            <p>Commissioned Art May be Included</p>
-            <p>Styling, Lighting, Furnishings</p>
+            <div class="carousel-container">
+                <div class="carousel-slide fade">
+                    <img src="images/home_concept_main.jpg" alt="Yacht interior design - from concept to launch" class="carousel-image">
+                    <div class="carousel-caption">From Concept to Launch</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_surfaces_materials.jpg" alt="Selection of material samples for yacht interiors" class="carousel-image">
+                    <div class="carousel-caption">Carefully Selected Surfaces and Materials</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_unique_environments.jpg" alt="Unique environment designed for life at sea" class="carousel-image">
+                    <div class="carousel-caption">Unique Environments for Your Life at Sea</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_art_accessories.jpg" alt="Art and accessories matching boat theme" class="carousel-image">
+                    <div class="carousel-caption">Art & Accessories to Match the Boat Theme</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_beautiful_details.jpg" alt="Beautiful details accenting the yacht design theme" class="carousel-image">
+                    <div class="carousel-caption">Beautiful Details Accent the Theme</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_safety_comfort.jpg" alt="Yacht interior emphasizing safety and comfort" class="carousel-image">
+                    <div class="carousel-caption">Safety and Comfort is Always Stressed</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_commissioned_art_content.jpg" alt="Example of commissioned art in a yacht interior" class="carousel-image">
+                    <div class="carousel-caption">Commissioned Art May be Included</div>
+                </div>
+                <div class="carousel-slide fade">
+                    <img src="images/home_styling_lighting_furnishings.jpg" alt="Interior styling, lighting, and furnishings for yachts" class="carousel-image">
+                    <div class="carousel-caption">Styling, Lighting, Furnishings</div>
+                </div>
+                <!-- Navigation buttons (optional but good) -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div class="carousel-dots" style="text-align:center; margin-top:10px;">
+                <button type="button" class="dot" onclick="currentSlide(1)" aria-label="Go to slide 1"></button>
+                <button type="button" class="dot" onclick="currentSlide(2)" aria-label="Go to slide 2"></button>
+                <button type="button" class="dot" onclick="currentSlide(3)" aria-label="Go to slide 3"></button>
+                <button type="button" class="dot" onclick="currentSlide(4)" aria-label="Go to slide 4"></button>
+                <button type="button" class="dot" onclick="currentSlide(5)" aria-label="Go to slide 5"></button>
+                <button type="button" class="dot" onclick="currentSlide(6)" aria-label="Go to slide 6"></button>
+                <button type="button" class="dot" onclick="currentSlide(7)" aria-label="Go to slide 7"></button>
+                <button type="button" class="dot" onclick="currentSlide(8)" aria-label="Go to slide 8"></button>
+            </div>
 
-            <h2>Interior Design for Yachts</h2>
+            <h2>Our Approach to Yacht Interior Design</h2>
             <p>
                 We are a full service design house, dedicated to the art of creating
                 the prefect interior for each of our clients. Every individual has
@@ -65,7 +106,7 @@
                 most, whether they are for their primary dwelling or their favorite
                 retreat.
             </p>
-            <p>Our Services include:</p>
+            <h3>Our Services include:</h3>
             <ul>
                 <li>Interior architecture and design</li>
                 <li>Styling, lighting and furnishing</li>

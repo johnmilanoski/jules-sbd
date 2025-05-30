@@ -57,9 +57,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-family-serif); /* Or a more distinct sans-serif for headings */
+    font-family: var(--font-family-sans-serif); /* Changed to sans-serif for a more modern feel like original site */
     color: var(--primary-color);
     margin-bottom: 0.75em;
+    font-weight: 600; /* Slightly bolder headings */
 }
 
 .container {
@@ -161,6 +162,12 @@ main {
     color: var(--accent-color);
 }
 
+.dropdown-menu li a.dropdown-item.active-dropdown-item {
+    background-color: var(--secondary-color); /* Or a distinct active color */
+    color: var(--white);
+    font-weight: bold;
+}
+
 /* Footer styles */
 .footer {
     background-color: var(--dark-gray);
@@ -197,12 +204,32 @@ main .container h1 {
 main .container p {
     font-size: var(--font-size-base);
     margin-bottom: 15px;
+    line-height: 1.7; /* Slightly more line height for body text */
 }
 
-main .container img.placeholder-image {
-    max-width: 500px;
-    margin: 20px auto;
-    border: 1px solid #ccc;
+/* General content links */
+main .container a {
+    color: var(--secondary-color);
+    text-decoration: none; /* Keep no underline by default for content links */
+}
+
+main .container a:hover,
+main .container a:focus {
+    color: var(--primary-color);
+    text-decoration: underline; /* Underline on hover/focus for clarity */
+}
+
+
+main .container img.placeholder-image,
+main .container img.descriptive-image,
+main .container img.responsive-image { /* Ensure these common classes also have good default block/margin */
+    max-width: 100%; /* Allow them to be responsive */
+    height: auto;
+    margin: 20px auto; /* Center if they are block and narrower than container */
+    display: block; /* Ensure margin auto works */
+    border: 1px solid var(--light-gray); /* Consistent border for placeholders */
+    padding: 2px; /* Small padding around image */
+    border-radius: 4px;
 }
 
 
@@ -265,6 +292,78 @@ main .container img.placeholder-image {
     }
 }
 
+/* Dropdown Menu Styles */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.nav-link .dropdown-arrow {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+    border: 1px solid var(--accent-color); /* Use accent or a shade of primary */
+    border-top: none; /* Avoid double border with navbar bottom */
+    padding: 0;
+    margin: 0; /* Adjusted to align with nav-link padding */
+    list-style: none;
+    z-index: 1000; /* Ensure dropdown is above other content */
+    min-width: 200px; /* Adjust as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-item.dropdown:hover .dropdown-menu,
+.nav-item.dropdown:focus-within .dropdown-menu { /* Show on hover or when child has focus */
+    display: block;
+}
+
+.dropdown-menu li {
+    margin-bottom: 0; /* Override general li rules if any */
+}
+
+.dropdown-menu li a.dropdown-item {
+    display: block;
+    padding: 12px 18px; /* Adjust padding */
+    color: var(--white);
+    text-decoration: none;
+    white-space: nowrap; /* Prevent wrapping */
+    font-size: 0.95rem; /* Slightly smaller than main nav links if desired */
+}
+
+.dropdown-menu li a.dropdown-item:hover,
+.dropdown-menu li a.dropdown-item:focus {
+    background-color: var(--secondary-color); /* Use secondary for hover */
+    color: var(--white);
+}
+
+/* Ensure dropdowns also work on mobile when menu is toggled */
+@media (max-width: 768px) {
+    .nav-item.dropdown:hover .dropdown-menu { /* Disable hover opening on mobile */
+        display: none;
+    }
+    .nav-item.dropdown .dropdown-menu.active { /* JS will toggle this class */
+        display: block;
+        position: static; /* Stack within the mobile menu */
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid var(--accent-color); /* Separator */
+    }
+    .nav-item.dropdown .nav-link { /* Make main link clickable to toggle */
+        cursor: pointer;
+    }
+    .dropdown-menu li a.dropdown-item {
+        padding: 10px 20px; /* Adjust padding for mobile list */
+        text-align: center; /* Center dropdown items in mobile */
+    }
+}
+
 /* Responsive adjustments for very small screens */
 @media (max-width: 480px) {
     :root { /* Further reduce font sizes for very small devices */
@@ -289,5 +388,462 @@ main .container img.placeholder-image {
 
     .navbar-collapse {
         top: 51px; /* Adjusted for smaller navbar brand: 15px + ~21px + 15px */
+    }
+}
+
+/* Carousel styles */
+.carousel-container {
+    position: relative;
+    max-width: 800px; /* Adjust as needed */
+    margin: 20px auto;
+    overflow: hidden; /* Important for slide transitions if not using fade */
+    border: 1px solid #ddd; /* Optional border */
+}
+
+.carousel-slide {
+    display: none; /* Hidden by default */
+    text-align: center;
+}
+
+.carousel-slide.active {
+    display: block; /* Show active slide */
+}
+
+.carousel-image {
+    width: 100%;
+    max-height: 450px; /* Adjust as needed */
+    object-fit: cover; /* Ensures image covers the area, might crop */
+}
+
+.carousel-caption {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent caption background */
+    color: var(--white);
+    font-size: var(--font-size-lg);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* Fade animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Prev/Next buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px; /* Vertically center */
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Dots */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    border: none; /* Reset button border */
+    padding: 0; /* Reset button padding */
+    appearance: none; /* Try to remove default button styling */
+}
+
+.active-dot, .dot:hover {
+    background-color: #717171;
+}
+
+/* Responsive adjustments for carousel */
+@media (max-width: 768px) {
+    .carousel-caption {
+        font-size: var(--font-size-base);
+    }
+    .prev, .next {
+        font-size: 18px;
+        padding: 12px;
+    }
+    .dot {
+        height: 12px;
+        width: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-caption {
+        font-size: 0.9rem; /* Match general small screen paragraph size */
+    }
+    .prev, .next {
+        font-size: 16px;
+        padding: 10px;
+    }
+     .dot {
+        height: 10px;
+        width: 10px;
+    }
+}
+
+/* Yacht Page Gallery Styles */
+.yacht-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    justify-content: center; /* Center items if they don't fill the row */
+    padding: 20px 0;
+}
+
+.yacht-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: calc(33.333% - 20px); /* Three items per row, considering gap */
+    margin-bottom: 20px; /* Consistent with gap */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.yacht-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Optional separator */
+    padding-bottom: 10px; /* Optional separator */
+}
+
+.yacht-item p {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    margin-top: 5px;
+}
+
+@media (max-width: 992px) { /* For tablets */
+    .yacht-item {
+        width: calc(50% - 20px); /* Two items per row */
+    }
+}
+
+@media (max-width: 600px) { /* For mobile phones */
+    .yacht-item {
+        width: 100%; /* One item per row */
+    }
+}
+
+/* Boutique Refit Page Styles */
+.refit-gallery {
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.refit-item {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* .refit-item img is covered by .placeholder-image if that class is used, 
+   or can have its own specific styles if needed. 
+   The .placeholder-image class is already defined with max-width: 500px and margin auto.
+   If a different max-width for refit images is desired, it can be specified here.
+   For now, relying on .placeholder-image class for refit images.
+*/
+
+/* Gallery Grid Styles (for Yachts, Other Projects) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjusted minmax for better spacing */
+    gap: 25px; /* Increased gap */
+    padding: 20px 0;
+}
+
+.gallery-item {
+    border: 1px solid var(--light-gray); /* Use variable */
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+    width: 100%; /* Ensure image fills the width of the anchor */
+    height: 220px; /* Fixed height for uniform look */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    display: block;
+}
+
+.gallery-item .caption {
+    padding: 12px; /* Slightly more padding */
+    background-color: var(--light-gray);
+    font-size: 1rem; /* Larger caption font */
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Responsive adjustments for gallery */
+@media (max-width: 768px) { /* More general breakpoint than 600px for first step */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    .gallery-item img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 15px;
+    }
+    .gallery-item img {
+        height: 180px;
+    }
+    .gallery-item .caption {
+        font-size: 0.9rem;
+    }
+}
+
+/* About Page Styles */
+.about-content .about-section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.about-content .about-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.about-content h2 {
+    font-size: var(--font-size-h2); /* Use defined heading sizes */
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.about-content h3 {
+    font-size: var(--font-size-h3);
+    color: var(--secondary-color); /* Differentiate h3 */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.about-image {
+    max-width: 350px; /* Control image size */
+    height: auto;
+    float: right; /* Float image to the right */
+    margin-left: 20px;
+    margin-bottom: 15px;
+    border: 1px solid var(--light-gray);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.icon-inline {
+    max-height: 20px; /* Adjust as needed */
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.boat-reviews ul {
+    list-style: disc; /* Use disc for standard list feel */
+    padding-left: 20px;
+}
+
+.boat-reviews ul li {
+    margin-bottom: 8px;
+}
+
+.boat-reviews ul li a {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+.boat-reviews ul li a:hover {
+    color: var(--primary-color);
+}
+
+
+.design-process-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.design-process-gallery img {
+    width: 100%;
+    height: 120px; /* Adjust for smaller images */
+    object-fit: cover;
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+}
+
+/* Responsive adjustments for About page */
+@media (max-width: 768px) {
+    .about-image {
+        float: none; /* Remove float on smaller screens */
+        display: block; /* Center it or adjust as needed */
+        margin: 0 auto 20px auto; /* Center floated image */
+        max-width: 80%; /* Allow it to be larger if not floated */
+    }
+
+    .design-process-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+     .design-process-gallery img {
+        height: 100px;
+    }
+}
+
+.refit-hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--light-gray);
+    margin: 30px 0;
+}
+
+/* Refit Page Specific Image Styling */
+.refit-item img.placeholder-image,
+.refit-item img.descriptive-image {
+    max-width: 600px; /* Or desired specific max-width for refit images */
+    margin: 20px auto; /* Keep centered */
+}
+
+
+/* Contact Page Styles */
+.contact-content {
+    padding-top: 20px; /* Add some space at the top */
+}
+
+.contact-header-image {
+    position: relative; /* For positioning text over image */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-header-image img {
+    width: 100%;
+    max-height: 300px; /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.contact-header-image h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+    padding: 15px 25px;
+    border-radius: 4px;
+    font-size: var(--font-size-h1); /* Prominent text */
+    width: 80%; /* Prevent text from being too wide */
+}
+
+.contact-details-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px;
+    justify-content: center; /* Center content if it wraps */
+}
+
+.contact-info {
+    /* flex: 1; Allow flex grow if form is present */
+    /* min-width: 300px; Minimum width before wrapping */
+    padding: 20px;
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    line-height: 1.8;
+}
+
+.contact-info h3 {
+    font-size: var(--font-size-h3);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.contact-info address {
+    font-style: normal;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.map-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white); /* Ensure text color remains white */
+    text-decoration: none;
+}
+
+/* Responsive for Contact page */
+@media (max-width: 768px) {
+    .contact-header-image h2 {
+        font-size: var(--font-size-h2);
+        padding: 10px 20px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-header-image h2 {
+        font-size: var(--font-size-h3); /* Even smaller for very small screens */
     }
 }

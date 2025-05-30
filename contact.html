@@ -16,7 +16,14 @@
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="yachts.html" class="nav-link">Yachts</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="yachts.html" class="nav-link">Yachts <span class="dropdown-arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="yachts.html">Completed Projects</a></li>
+                            <li><a class="dropdown-item" href="yachts_in_progress.html">In Progress</a></li>
+                            <li><a class="dropdown-item" href="yachts_refits.html">Boutique Refits</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a href="other_projects.html" class="nav-link">Other Projects</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
@@ -37,10 +44,32 @@
     </header>
 
     <main>
-        <div class="container">
-            <h1>Contact Us</h1>
-            <p>Contact information, a contact form, or details on how to reach Sylvia Bolton Design will be available on this page.</p>
-            <!-- Placeholder for contact form or details -->
+        <div class="container contact-content">
+            <div class="contact-header-image">
+                <img src="images/contact/sunset.jpg" alt="Sunset over water" class="responsive-image">
+                <h2>INTERIOR DESIGN FOR YACHTS</h2>
+            </div>
+            
+            <div class="contact-details-container">
+                <div class="contact-info">
+                    <h3>Sylvia Bolton Design, Inc.</h3>
+                    <address>
+                        2288 W Commodore Way<br>
+                        Suite 210<br>
+                        Seattle, WA 98199
+                    </address>
+                    <p><strong>Tel:</strong> <a href="tel:+12062170863">1+206.217.0863</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@sylviabolton.com">info@sylviabolton.com</a></p>
+                    <p><a href="#" class="map-link">View Map</a></p> <!-- Link to Google Maps would be here -->
+                </div>
+                <!-- Add a placeholder for a contact form if desired later -->
+                <!-- 
+                <div class="contact-form-placeholder">
+                    <h3>Send us a Message</h3>
+                    <p>A contact form will be available here in the future.</p>
+                </div>
+                -->
+            </div>
         </div>
     </main>
 
