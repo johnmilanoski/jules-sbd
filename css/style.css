@@ -1,0 +1,293 @@
+/* Basic CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Variables - Color Palette & Typography */
+:root {
+    --primary-color: #0A2A43; /* Deep Blue */
+    --secondary-color: #1F7A8C; /* Teal */
+    --accent-color: #BFDBF7; /* Light Blue */
+    --light-gray: #F0F0F0;
+    --dark-gray: #333333;
+    --white: #FFFFFF;
+
+    --font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-family-serif: 'Georgia', Times, 'Times New Roman', serif; /* Example serif */
+    
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.75rem;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.75rem;
+}
+
+/* Basic styles */
+body {
+    font-family: var(--font-family-sans-serif);
+    color: var(--dark-gray);
+    background-color: var(--white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-serif); /* Or a more distinct sans-serif for headings */
+    color: var(--primary-color);
+    margin-bottom: 0.75em;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Main page structure */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* Allows main content to grow and push footer down */
+    padding: 20px 0;
+}
+
+/* Header styles */
+.header {
+    background-color: var(--light-gray);
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo img {
+    max-height: 60px; /* Adjust as needed */
+}
+
+.header .tagline p {
+    font-size: var(--font-size-lg);
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    display: none; /* Hidden by default, shown on small screens */
+    background: none;
+    border: 1px solid var(--white);
+    color: var(--white);
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.navbar-nav {
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: var(--white);
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+/* Footer styles */
+.footer {
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    margin-top: 10px;
+}
+
+.footer-links li {
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Placeholder styles for index.html content */
+main .container h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: 20px;
+}
+
+main .container p {
+    font-size: var(--font-size-base);
+    margin-bottom: 15px;
+}
+
+main .container img.placeholder-image {
+    max-width: 500px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-collapse {
+        display: none; /* Hidden by default */
+        width: 100%;
+        position: absolute;
+        top: 58px; /* Adjusted: 15px padding + ~28px font + 15px padding */
+        left: 0;
+        z-index: 1000; /* Ensure it's above other content */
+        background-color: var(--primary-color);
+        padding: 10px 0;
+    }
+
+    .navbar-collapse.active { /* Class to be toggled by JS */
+        display: block;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header .tagline p {
+        margin-top: 10px;
+        font-size: var(--font-size-base); /* Adjust tagline font on smaller screens */
+    }
+
+    /* Adjust main content font sizes for better readability on smaller screens */
+    main .container h1 {
+        font-size: var(--font-size-h2); /* Was h1 (2.5rem), now 2rem */
+    }
+
+    main .container p {
+        font-size: 0.9rem; /* Was base (1rem) */
+    }
+
+    .footer-links {
+        flex-direction: column; /* Stack footer links */
+    }
+
+    .footer-links li {
+        margin-bottom: 8px;
+    }
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+    :root { /* Further reduce font sizes for very small devices */
+        --font-size-base: 0.9rem;
+        --font-size-lg: 1.1rem;
+        --font-size-xl: 1.5rem; /* Navbar brand */
+        --font-size-h1: 2rem;
+        --font-size-h2: 1.75rem;
+        --font-size-h3: 1.5rem;
+    }
+
+    .header .logo img {
+        max-height: 50px; /* Slightly smaller logo */
+    }
+
+    main .container h1 {
+        font-size: var(--font-size-h1); /* Use the new h1 for very small screens */
+    }
+     main .container p {
+        font-size: var(--font-size-base);
+    }
+
+    .navbar-collapse {
+        top: 51px; /* Adjusted for smaller navbar brand: 15px + ~21px + 15px */
+    }
+}
