@@ -847,3 +847,120 @@ main .container img.responsive-image { /* Ensure these common classes also have 
         font-size: var(--font-size-h3); /* Even smaller for very small screens */
     }
 }
+
+/* Yacht Detail Page Styles */
+.yacht-detail {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.yacht-detail h1 { /* Yacht Title */
+    font-size: var(--font-size-h1);
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center; /* Center the main yacht title */
+}
+
+.yacht-image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.yacht-image-gallery img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Or 'contain' if full image visibility is preferred */
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.virtual-tour {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--light-gray);
+    border-radius: 4px;
+}
+
+.virtual-tour-link { /* If we use a class on the anchor */
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: var(--font-size-lg);
+    padding: 10px 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.virtual-tour-link:hover,
+.virtual-tour-link:focus {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.virtual-tour-link img { /* Styling for the tour icon if it's an img tag */
+    width: 28px; /* Adjust size as needed */
+    height: 28px;
+    margin-right: 10px;
+    vertical-align: middle; /* Already handled by flex if used on <a> */
+}
+.virtual-tour p em a { /* Styling for the placeholder link */
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+.virtual-tour p em a:hover {
+    color: var(--primary-color);
+}
+
+
+.yacht-description {
+    margin-top: 20px; /* Space above description */
+}
+
+.yacht-description h2 { /* "About This Yacht" */
+    font-size: var(--font-size-h2);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--light-gray); /* Separator line */
+    padding-bottom: 10px;
+}
+
+.yacht-description p {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: var(--dark-gray); /* Ensure good contrast for body text */
+}
+
+/* Responsive adjustments for Yacht Detail Page */
+@media (max-width: 768px) {
+    .yacht-detail h1 {
+        font-size: var(--font-size-h2); /* Slightly smaller title on tablets */
+    }
+    .yacht-image-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust for smaller screens */
+        gap: 15px;
+    }
+    .virtual-tour-link {
+        font-size: var(--font-size-base); /* Adjust font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .yacht-detail h1 {
+        font-size: var(--font-size-h1); /* Using the smallest H1 var, which is 2rem */
+    }
+     .yacht-image-gallery {
+        grid-template-columns: 1fr; /* Single column for images */
+    }
+    .yacht-description h2 {
+        font-size: var(--font-size-h3);
+    }
+}
