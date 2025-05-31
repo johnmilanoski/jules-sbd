@@ -40,7 +40,7 @@ img {
 
     --font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-family-serif: 'Georgia', Times, 'Times New Roman', serif; /* Example serif */
-    
+
     --font-size-base: 1rem;
     --font-size-lg: 1.25rem;
     --font-size-xl: 1.75rem;
@@ -569,8 +569,8 @@ main .container img.responsive-image { /* Ensure these common classes also have 
     text-align: center;
 }
 
-/* .refit-item img is covered by .placeholder-image if that class is used, 
-   or can have its own specific styles if needed. 
+/* .refit-item img is covered by .placeholder-image if that class is used,
+   or can have its own specific styles if needed.
    The .placeholder-image class is already defined with max-width: 500px and margin auto.
    If a different max-width for refit images is desired, it can be specified here.
    For now, relying on .placeholder-image class for refit images.

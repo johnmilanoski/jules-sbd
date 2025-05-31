@@ -39,14 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let i;
         let slides = document.getElementsByClassName("carousel-slide");
         let dots = document.getElementsByClassName("dot");
-        
+
         if (!slides.length || !dots.length) return; // Exit if no carousel elements on the current page
 
         // Clear existing auto-slide timer if we are manually changing slide
         if (n !== undefined && autoSlideTimeout) {
             clearTimeout(autoSlideTimeout);
         }
-        
+
         if (n !== undefined) { // If called by prev/next or dots (manual interaction)
              slideIndex = n;
         } else { // If called by auto-slide timer or initial load without n
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (slideIndex >= slides.length) {slideIndex = 0} // Loop to first
         if (slideIndex < 0) {slideIndex = slides.length - 1} // Loop to last (for prev button)
-        
+
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
             slides[i].classList.remove("active"); // Ensure active class is removed
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active-dot", "");
         }
-        
+
         slides[slideIndex].style.display = "block";
         slides[slideIndex].classList.add("active"); // Add active class for CSS transitions/animations
         dots[slideIndex].className += " active-dot";
@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
       showSlides(slideIndex + n_offset);
     }
 
-    window.currentSlide = function(n_idx) { // n_idx is 1-based index from HTML
-      showSlides(n_idx - 1); // Convert to 0-based index
+    window.currentSlide = function(n_idx) { // n_idx is 0-based index from HTML (corrected)
+      showSlides(n_idx);
     }
-    
+
     // Initialize carousel only if carousel elements exist on the page
     if (document.querySelector(".carousel-container")) {
         showSlides(slideIndex); // Show first slide (index 0) and start auto-slide
